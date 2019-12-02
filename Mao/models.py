@@ -3,13 +3,19 @@ from django.db import models
 
 # Create your models here.
 
-class User(models.Model):
-    name = models.CharField(max_length=20)
-    date = models.DateTimeField()
-    isDelete = models.BooleanField(default=False)
+class Device(models.Model):
+    d_name = models.CharField(max_length=20)
+    d_type = models.CharField(max_length=20)
+    d_date = models.DateTimeField()
     # 关联外键
     user_class = models.ForeignKey("Class", on_delete=models.CASCADE)
 
 
 class Class(models.Model):
     class_name = models.CharField(max_length=20)
+    class_model = models.CharField(max_length=100)
+
+
+class Project(models.Model):
+    project_name = models.CharField(max_length=100)
+    project_describe = models.CharField(max_length=1000)

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据库操作</title>
+</head>
+<body>
+<a href="/mao/1/">首页</a>
+
+<div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>line.name</th>
+            <th>line.date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for line in Info %}
+            <tr>
+                <td>{{ line.d_name }}</td>
+                <td>{{ line.d_date }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -4,4 +4,8 @@ from Mao import views
 
 urlpatterns = [
     path('1/', views.index),
+    path('2/', views.showdevice),
+    path('3/', views.add_device),
+
+
 ]
