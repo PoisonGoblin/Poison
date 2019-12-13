@@ -11,14 +11,15 @@
     <table border="1">
         <thead>
         <tr>
-            <th>line.name</th>
-            <th>line.date</th>
+            <th>名称</th>
+            <th>日期</th>
         </tr>
         </thead>
         <tbody>
         {% for line in Info %}
             <tr>
                 <td>{{ line.d_name }}</td>
+                <td>{{ line.d_type }}</td>
                 <td>{{ line.d_date }}</td>
             </tr>
         {% endfor %}

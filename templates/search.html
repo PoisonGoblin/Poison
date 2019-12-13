@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>添加设备</title>
+    <title>数据库操作</title>
 </head>
 <body>
 <a href="/mao/1/">首页</a>
-<form action="/mao/3/" method="post">
+<form action="/mao/4/" method="post">
 {% csrf_token %}
     <p>名称<input type="text" name="d_name"></p>
     <p>类型<input type="text" name="d_type"></p>
     <p>时间<input type="datetime-local" name="d_date"></p>
     <p>类型<input type="number" name="user_class_id"></p>
-    <p><input type="submit" value="submit"></p>
+    <p>
+        <button type="search">sousuo</button>
+    </p>
 </form>
+
+
 </body>
 </html>
