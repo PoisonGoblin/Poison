@@ -21,11 +21,13 @@ def add_device(request):
         name = request.POST.get("d_name", None)
         type = request.POST.get("d_type", None)
         date = request.POST.get("d_date", None)
+        describe = request.POST.get("d_describe", None)
         user_class_id = request.POST.get("user_class_id", None)
         models.Device.objects.create(
             d_name=name,
             d_type=type,
             d_date=date,
+            d_describe=describe,
             user_class_id=user_class_id
         )
         Device_list = models.Device.objects.all()
@@ -37,9 +39,6 @@ def search_device(request):
     from Mao import models
     if request.method == "POST":
         name = request.POST.get("d_name", None)
-        type = request.POST.get("d_type", None)
-        date = request.POST.get("d_date", None)
-        user_class_id = request.POST.get("user_class_id", None)
         search_Info = models.Device.objects.all().filter(d_name=name)
         return render(request, '../templates/show.html', {'Info': search_Info})
     return render(request, '../templates/search.html')
