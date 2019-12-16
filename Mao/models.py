@@ -8,6 +8,7 @@ class Device(models.Model):
     d_type = models.CharField(max_length=20)
     d_date = models.DateTimeField()
     d_describe = models.CharField(max_length=500)
+    d_price = models.IntegerField()
     # 关联外键
     user_class = models.ForeignKey("Class", on_delete=models.CASCADE)
 

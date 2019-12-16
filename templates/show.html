@@ -8,11 +8,23 @@
 <a href="/mao/1/">首页</a>
 
 <div>
+    <form action="/mao/2/" method="post">
+        {% csrf_token %}
+        <p>名称<input type="text" name="d_name">
+            <button type="search">搜索</button>
+        </p>
+    </form>
+</div>
+
+<div>
     <table border="1">
         <thead>
         <tr>
             <th>名称</th>
-            <th>日期</th>
+            <th>型号</th>
+            <th>描述</th>
+            <th>所属方案</th>
+            <th>价格</th>
         </tr>
         </thead>
         <tbody>
@@ -20,11 +32,14 @@
             <tr>
                 <td>{{ line.d_name }}</td>
                 <td>{{ line.d_type }}</td>
-                <td>{{ line.d_date }}</td>
+                <td>{{ line.d_describe }}</td>
+                <td>{{ line.user_class.class_name }}</td>
+                <td>{{ line.d_price }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 </div>
+
 </body>
 </html>

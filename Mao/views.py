@@ -12,6 +12,13 @@ def index(request):
 def showdevice(request):
     from Mao import models
     Info = models.Device.objects.all()
+    if request.method == "POST":
+        name = request.POST.get("d_name", None)
+        if name == '':
+            return render(request, '../templates/show.html', {'Info': Info})
+        else:
+            search_Info = models.Device.objects.all().filter(d_name=name | d_type=name)
+            return render(request, '../templates/show.html', {'Info': search_Info})
     return render(request, '../templates/show.html', {'Info': Info})
 
 
