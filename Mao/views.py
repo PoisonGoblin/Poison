@@ -5,7 +5,6 @@ from django.shortcuts import render, HttpResponse
 
 
 def index(request):
-    # return HttpResponse("hello")
     return render(request, '../templates/index.html')
 
 
@@ -15,20 +14,21 @@ def showdevice(request):
     Info_model = models.Class.objects.all()
     if request.method == "POST":
         name = request.POST.get("d_name", None)
-        type = request.GET.get("type", None)
+        type = request.POST.get("type", None)
+        # 显示所有
+        if type == '1':
+            return render(request, '../templates/show.html', {'Info': Info, 'Info_model': Info_model})
         # 搜索框、方案为空
         if name == '' and type == '':
             return render(request, '../templates/show.html', {'Info': Info, 'Info_model': Info_model})
         # 搜索框为空，方案不为空
-        # if name == '' and type != '':
-        #     search_Info = models.Device.objects.all().filter(user_class_id=type)
-        #     return render(request, '../templates/show.html', {'Info': search_Info, 'Info_model': Info_model})
+        if name == '' and type != '':
+            search_Info = models.Device.objects.all().filter(user_class_id=type)
+            return render(request, '../templates/show.html', {'Info': search_Info, 'Info_model': Info_model})
         # 搜索框不为空，方案为空
         if name != '' and type == '':
             search_Info_name = models.Device.objects.all().filter(d_name=name)
             return render(request, '../templates/show.html', {'Info': search_Info_name, 'Info_model': Info_model})
-        if type == '':
-            return HttpResponse(type)
         # 搜索框、方案均不为空
         else:
             search_Info_name = models.Device.objects.all().filter(d_name=name)
@@ -58,15 +58,7 @@ def add_device(request):
     return render(request, '../templates/add.html')
 
 
-def search_device(request):
+def show_type(request):
     from Mao import models
-    search_Info_model = models.Class.objects.all()
-    if request.method == "POST":
-        name = request.POST.get("d_name", None)
-        search_Info = models.Device.objects.all().filter(d_name=name)
-        return render(request, '../templates/show.html', {'Info': search_Info})
-    if request.method == "GET":
-        type = request.GET.get("type", None)
-        search_Info = models.Class.objects.all().filter(class_name=type)
-        return render(request, '../templates/show.html', {'Info_model': search_Info})
-    return render(request, '../templates/search.html', {'Info_model': search_Info_model})
+    type_list = models.Class.objects.all()
+    return render(request, '../templates/show_type.html', {'list':type_list})
