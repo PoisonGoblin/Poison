@@ -17,7 +17,7 @@ def showdevice(request):
         if name == '':
             return render(request, '../templates/show.html', {'Info': Info})
         else:
-            search_Info = models.Device.objects.all().filter(d_name=name | d_type=name)
+            search_Info = models.Device.objects.all().filter(d_name=name)
             return render(request, '../templates/show.html', {'Info': search_Info})
     return render(request, '../templates/show.html', {'Info': Info})
 
