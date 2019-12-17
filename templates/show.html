@@ -6,11 +6,27 @@
 </head>
 <body>
 <a href="/mao/1/">首页</a>
+{#<div>#}
+{#    <label>所属方案#}
+{#        <select name="type">#}
+{#            {% for type in Info_model %}#}
+{#                <option id="type" value="{{ type.class_model }}">{{ type.class_name }}</option>#}
+{#            {% endfor %}#}
+{#        </select>#}
+{#    </label>#}
+{#</div>#}
 
 <div>
     <form action="/mao/2/" method="post">
         {% csrf_token %}
-        <p>名称<input type="text" name="d_name">
+        <label>所属方案
+            <select name="type">
+                {% for type in Info_model %}
+                    <option id="type" value="{{ type.class_model }}">{{ type.class_name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <p>名称/型号<input type="text" name="d_name">
             <button type="search">搜索</button>
         </p>
     </form>
